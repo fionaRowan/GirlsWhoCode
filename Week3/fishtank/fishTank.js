@@ -8,9 +8,10 @@
 
 background(89, 216, 255);
 
+
 //fish variables
 var centerX = random(150,300);
-var centerY = random(100,300);
+var centerY = random(100,200);
 var bodyLength = random(100,200);
 var bodyHeight = random(50,150);
 var bodyColor = color(random(0,162), random(0,200), random(0,255));
@@ -19,9 +20,9 @@ var bodyColor = color(random(0,162), random(0,200), random(0,255));
 
 //kelp variables
 var kX = random(150,300);
-var kY = random(100,300);
-var kLength = random(50,100);
-var kHeight = random(100,300);
+var kY = random(200,300);
+var kLength = random(10,50);
+var kHeight = random(200,300);
 var kColor = color(random(0,162),random(0,200),random(0,255));
 
 var drawFish = function( x, y, l, h, c){
@@ -58,20 +59,22 @@ drawKelp(kX, kY, kLength, kHeight, kColor);
 
 
 //draw starfish 
-var angle = random(10); 
-var sX = 0;//100;//random(150,300);
-var sY = 0;//100;//random(100,300);
-var sLength = random(10,50);
-var sHeight = random(200,300);
+var angle = random(3); 
+var sX = 0;
+var sY = 0;
+var sLength = random(10,40);
+var sHeight = random(100,200);
 var sColor = color(random(0,162),random(0,200),random(0,255));
+var transX = random(1,4);
+var transY = random(1,4); 
 
 
 var drawStarfish = function( x, y, l, h, c){
     
-    translate(width/2, height/2);
+    translate(width/transX, height/transY);
     for(var i = 0; i<3; i++){
         rotate(angle); 
-        ellipse(x, y, l, h); 
+        ellipse(x, y, l, h);
         angle+=75;
     }
        
@@ -81,6 +84,3 @@ noStroke();
 fill(sColor);
 drawStarfish(sX,sY,sLength, sHeight, sColor);
 
-
-         
-         
