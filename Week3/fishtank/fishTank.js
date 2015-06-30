@@ -58,21 +58,22 @@ drawKelp(kX, kY, kLength, kHeight, kColor);
 
 
 //draw starfish 
-var angle = 0; 
-var sX = random(150,300);
-var sY = random(100,300);
-var sLength = random(50,100);
-var sHeight = random(100,300);
+var angle = random(10); 
+var sX = 0;//100;//random(150,300);
+var sY = 0;//100;//random(100,300);
+var sLength = random(10,50);
+var sHeight = random(200,300);
 var sColor = color(random(0,162),random(0,200),random(0,255));
 
 
 var drawStarfish = function( x, y, l, h, c){
     
-    rotate(angle); 
-    ellipse(x, y, l, h); 
-    angle+=2*3.1415/5;
-    rotate(angle); 
-    ellipse(x, y, l, h); 
+    translate(width/2, height/2);
+    for(var i = 0; i<3; i++){
+        rotate(angle); 
+        ellipse(x, y, l, h); 
+        angle+=75;
+    }
        
 };
 
@@ -81,4 +82,5 @@ fill(sColor);
 drawStarfish(sX,sY,sLength, sHeight, sColor);
 
 
+         
          
