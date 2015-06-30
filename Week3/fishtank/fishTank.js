@@ -3,6 +3,9 @@
 // Project prompt: write code that randomly generates an image of 
 // a fish tank (using khan academy template below)
 // https://www.khanacademy.org/computing/computer-programming/programming/functions/p/project-fish-tank
+
+
+
 background(89, 216, 255);
 
 //fish variables
