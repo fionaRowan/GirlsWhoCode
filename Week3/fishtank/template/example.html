@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<script src="processing-1.4.1.js"></script>
+		<script type="text/processing" data-processing-target="mycanvas">
+			void setup()
+			{
+			  size(400,400);
+			  background(89, 216, 255);
+			  fill(255);
+			  noLoop();
+			  PFont fontA = loadFont("courier");
+			  textFont(fontA, 14);  
+			}
+
+			void draw(){  
+			  text("Hello Web!",20,20);
+			  println("Hello ErrorLog!");
+
+
+			  //fish
+			noStroke();
+			fill(bodyColor);
+
+			drawFish(centerX, centerY, bodyLength, bodyHeight, bodyColor);
+
+			//kelp
+			noStroke();
+			fill(kColor);
+
+			drawKelp(kX, kY, kLength, kHeight, kColor);
+
+			//bubbles
+			fill(247, 244, 247);
+ 			ellipse(bX, bY, 20, 20);
+			    bX += 20;
+			    bY -= 20;
+			    ellipse(bX, bY, 20, 20);
+			    bX -= 20;
+			    bY -= 20;
+
+			}
+
+			//fish variables
+			var centerX = random(150,300);
+			var centerY = random(100,300);
+			var bodyLength = random(100,200);
+			var bodyHeight = random(50,150);
+			var bodyColor = color(random(0,162), random(0,200), random(0,255));
+
+
+			var drawFish = function( x, y, l, h, c){
+			    
+			    // body
+			    ellipse(centerX, centerY, bodyLength, bodyHeight);
+			    // tail
+			    var tailWidth = bodyLength/4;
+			    var tailHeight = bodyHeight/2;
+			    triangle(centerX-bodyLength/2, centerY,
+			         centerX-bodyLength/2-tailWidth, centerY-tailHeight,
+			         centerX-bodyLength/2-tailWidth, centerY+tailHeight);
+			    // eye
+			    fill(33, 33, 33);
+			    ellipse(centerX+bodyLength/4, centerY, bodyHeight/5,          bodyHeight/5);
+			       
+			};
+
+	
+
+			//kelp variables
+			var kX = random(150,300);
+			var kY = random(200,300);
+			var kLength = random(10,50);
+			var kHeight = random(200,300);
+			var kColor = color(random(0,162),random(0,200),random(0,255));
+			var drawKelp = function( x, y, l, h, c){
+			    // body
+			    ellipse(kX, kY, kLength, kHeight);
+			      
+			};
+
+
+
+			//fish bubbles
+
+			var bX=centerX + 20 +bodyLength/2;
+			var bY = centerY-20;
+			
+			
+		
+
+
+		</script>
+	</head>
+	<body>
+		<canvas id="mycanvas"></canvas>
+	</body>
+</html>
