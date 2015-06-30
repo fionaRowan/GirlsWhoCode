@@ -71,12 +71,13 @@ var transY = random(1,4);
 
 var drawStarfish = function( x, y, l, h, c){
     
-    translate(width/transX, height/transY);
+    //translate(width/transX, height/transY);
     for(var i = 0; i<3; i++){
         rotate(angle); 
         ellipse(x, y, l, h);
         angle+=75;
     }
+    //translate(-width/transX, -height/transY);
        
 };
 
@@ -84,3 +85,17 @@ noStroke();
 fill(sColor);
 drawStarfish(sX,sY,sLength, sHeight, sColor);
 
+//fish bubbles
+
+var bX=-300;
+var bY = 100;
+
+
+
+fill(247, 244, 247);
+draw = function() {
+    ellipse(bX, bY, 30, 30);
+    bX+= 70;
+    ellipse(bX, bY, 30, 30);
+    bY+=70;
+};
