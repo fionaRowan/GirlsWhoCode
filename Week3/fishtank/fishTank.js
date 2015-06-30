@@ -11,7 +11,7 @@ background(89, 216, 255);
 
 //fish variables
 var centerX = random(150,300);
-var centerY = random(100,200);
+var centerY = random(100,300);
 var bodyLength = random(100,200);
 var bodyHeight = random(50,150);
 var bodyColor = color(random(0,162), random(0,200), random(0,255));
@@ -68,37 +68,42 @@ var sColor = color(random(0,162),random(0,200),random(0,255));
 var transX = random(1,4);
 var transY = random(1,4); 
 
-
-var drawStarfish = function( x, y, l, h, c){
+// var drawStarfish = function( x, y, l, h, c){
     
-    translate(width/transX, height/transY);
-    for(var i = 0; i<3; i++){
-        rotate(angle); 
-        ellipse(x, y, l, h);
-        angle+=45;
-    }
-    translate(-(width/transX), -(height/transY));
-    rotate(225);
+//     translate(width/transX, height/transY);
+//     for(var i = 0; i<3; i++){
+//         rotate(angle); 
+//         ellipse(x, y, l, h);
+//         angle+=45;
+//     }
+//     translate(-(width/transX), -(height/transY));
+//     rotate(225);
     
        
-};
+// };
 
-noStroke();
-fill(sColor);
-drawStarfish(sX,sY,sLength, sHeight, sColor);
+// noStroke();
+// fill(sColor);
+// drawStarfish(sX,sY,sLength, sHeight, sColor);
+
+
 
 
 //fish bubbles
 
-var bX=-300;
-var bY = 100;
+var bX=centerX + 20 +bodyLength/2;
+var bY = centerY-20;
 fill(247, 244, 247);
 draw = function() {
-    ellipse(bX, bY, 30, 30);
-    bX+= 70;
-    ellipse(bX, bY, 30, 30);
-    bY+=70;
+    ellipse(bX, bY, 20, 20);
+    bX += 20;
+    bY -= 20;
+    ellipse(bX, bY, 20, 20);
+    bX -= 20;
+    bY -= 20;
 };
+
+
 
 
 
