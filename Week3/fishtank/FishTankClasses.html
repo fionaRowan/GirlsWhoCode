@@ -6,8 +6,12 @@ GWC -->
 	<head>
 		<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
+
+			//global variables
 			var fish;
 			var kelp; 
+
+			//setup
 			void setup()
 			{
 			  size(400,400);
@@ -16,10 +20,13 @@ GWC -->
 			  noLoop();
 			  PFont fontA = loadFont("courier");
 			  textFont(fontA, 14);  
+
+			  //create class objects
 			  fish = new Fish(random(150,300), random(100,300),random(100,200), random(50,150), [random(0,1622),random(0,200), random(0,200)]);
 			  kelp= new Kelp(random(150,300),kY = random(200,300),random(10,50),random(200,300),[random(0,162),random(0,200),random(0,255)]);
 			}
 
+			//call draw functions in objects
 			void draw(){  
 			  text("Hello Web!",20,20);
 			  println("Hello ErrorLog!");
@@ -29,7 +36,9 @@ GWC -->
 
 			}
 
+			//fish class
 			class Fish {
+					//fish variables
 					var centerX;
 					var centerY;
 					var bodyLength;
@@ -38,6 +47,7 @@ GWC -->
 					var g; 
 					var b; 
 
+					//class constructor
 					Fish(x,y,l,h, color) {
 						centerX = x;
 						centerY = y;
@@ -49,7 +59,7 @@ GWC -->
 					}
 			
 
-
+					//draw function
 					void drawFish(){
 						
 						noStroke();
@@ -68,6 +78,7 @@ GWC -->
 
 			}
 
+			//kelp class
 			class Kelp {
 				var kX;
 				var kY;
@@ -77,6 +88,7 @@ GWC -->
 				var g;
 				var b; 
 
+				//class constructor
 				Kelp(x,y,l,h,color){
 					kX = x;
 					kY = y; 
@@ -87,6 +99,7 @@ GWC -->
 					b=color[2];
 				}
 
+				//draw function
 				void drawKelp(){
 					noStroke(); 
 					fill(r,g,b);
