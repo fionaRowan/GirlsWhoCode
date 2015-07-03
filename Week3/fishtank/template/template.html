@@ -1,0 +1,109 @@
+<!-- Fiona Rowan
+example: standalone FishTank, with classes
+GWC -->
+
+<html>
+	<head>
+		<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
+		<script type="text/processing" data-processing-target="mycanvas">
+			var fish;
+			var kelp; 
+			void setup()
+			{
+			  size(400,400);
+			  background(89, 216, 255);
+			  fill(255);
+			  noLoop();
+			  PFont fontA = loadFont("courier");
+			  textFont(fontA, 14);  
+			  fish = new Fish(random(150,300), random(100,300),random(100,200), random(50,150), [random(0,1622),random(0,200), random(0,200)]);
+			  kelp= new Kelp(random(150,300),kY = random(200,300),random(10,50),random(200,300),[random(0,162),random(0,200),random(0,255)]);
+			}
+
+			void draw(){  
+			  text("Hello Web!",20,20);
+			  println("Hello ErrorLog!");
+			  fish.drawFish();
+			  kelp.drawKelp();
+
+
+			}
+
+			class Fish {
+					var centerX;
+					var centerY;
+					var bodyLength;
+					var bodyHeight;
+					var r;
+					var g; 
+					var b; 
+
+					Fish(x,y,l,h, color) {
+						centerX = x;
+						centerY = y;
+						bodyLength = l; 
+						bodyHeight = h;
+						r = color[0];
+						g = color[1];
+						b = color[2];  
+					}
+			
+
+
+					void drawFish(){
+						
+						noStroke();
+						fill(r,g,b);
+					    ellipse(centerX, centerY, bodyLength, bodyHeight);
+					    
+					    var tailWidth = bodyLength/4;
+					    var tailHeight = bodyHeight/2;
+					    triangle(centerX-bodyLength/2, centerY,
+					         centerX-bodyLength/2-tailWidth, centerY-tailHeight,
+					         centerX-bodyLength/2-tailWidth, centerY+tailHeight);
+					    
+					    fill(33, 33, 33);
+					    ellipse(centerX+bodyLength/4, centerY, bodyHeight/5,          bodyHeight/5);
+					}
+
+			}
+
+			class Kelp {
+				var kX;
+				var kY;
+				var kLength;
+				var kHeight; 
+				var r;
+				var g;
+				var b; 
+
+				Kelp(x,y,l,h,color){
+					kX = x;
+					kY = y; 
+					kLength = l; 
+					kHeight = h; 
+					r= color[0];
+					g=color[1]; 
+					b=color[2];
+				}
+
+				void drawKelp(){
+					noStroke(); 
+					fill(r,g,b);
+					ellipse(kX, kY, kLength, kHeight);
+
+				}
+			}
+
+
+
+
+
+
+
+		</script>
+	</head>
+	<body>
+		<canvas id="mycanvas"></canvas>
+	</body>
+</html>
