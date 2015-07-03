@@ -9,8 +9,6 @@
 		var frontDrop; 
 		var width = 800;
 		var height = 500;
-
-		// layerHeight - buildHeight -positioner
 			void setup()
 			{
 
@@ -55,7 +53,7 @@
 				var r; 
 				var g; 
 				var b; 
-				var positioner;
+				var inverseWidth;
 				var buildings = new Array(); 
 				var scrollEndX;
 
@@ -65,7 +63,7 @@
 					r= color[0]; 
 					g= color[1]; 
 					b= color[2];
-					positioner = height - layerHeight; 
+					inverseWidth = height - layerHeight; 
 					var minHeight = layerHeight*0.25; 
 					var buildHeight, buildWidth; 
 					var currentX = 0; 
@@ -74,7 +72,7 @@
 
 					while(currentX < endX){
 						buildHeight = Math.floor(Math.random()*(layerHeight-minHeight)+minHeight);
-						buildWidth = 100; // test 
+						buildWidth = inverseWidth; // test 
 						build = new Building(buildWidth, buildHeight, [r,g,b], currentX, height - buildHeight);
 						buildings.push(build);
 						currentX +=buildWidth; 
@@ -108,7 +106,7 @@
 				void addBuilding(xPos){
 					var minHeight = layerHeight*0.25; 
 					var buildHeight = Math.floor(Math.random()*(layerHeight-minHeight)+minHeight);
-					var buildWidth = 100; // test 
+					var buildWidth = inverseWidth; // test 
 					var build = new Building(buildWidth, buildHeight, [r,g,b], xPos, height - buildHeight);
 						buildings.push(build);
 
@@ -154,6 +152,25 @@
 				void move(speed){	
 					xPos -= speed; 
 				}
+			}
+
+			class Person { 
+				var person;
+				var r; 
+				var g; 
+				var b;
+
+				Person(name, color){
+					person = name; 
+					r= color[0];
+					g=color[1]; 
+					b=color[2]; 
+				}
+
+				void drawPerson(){
+					noStroke();
+				}
+
 			}
 
 
