@@ -18,9 +18,9 @@
 			  PFont fontA = loadFont("courier");
 			  textFont(fontA, 14);  
 
-			  backDrop = new Layer(); 
-			  middleDrop = new Layer(); 
-			  frontDrop = new Layer(); 
+			  backDrop = new Drop(700, 0, [0,0,0]); 
+			  middleDrop = new Drop(500, 0, [100,100,100]); 
+			  frontDrop = new Drop(300, 0, [200,200,200]); 
 			}
 
 			void draw(){  
@@ -28,13 +28,13 @@
 			  println("Hello ErrorLog!");
 
 			  backDrop.drawBuildings();
-			  backDrop.moveBuildings();
+			  //backDrop.moveBuildings();
 
 			  middleScroller.drawBuildings(); 
-			  middleScroller.moveBuildings(); 
+			  //middleScroller.moveBuildings(); 
 
 			  frontScroller.drawBuildings();
-			  frontScroller.moveBuildings(); 
+			  //frontScroller.moveBuildings(); 
 			}
 
 
@@ -76,9 +76,9 @@
 
 				}
 
-				void moveBuildings(){
+				// void moveBuildings(){
 
-				}
+				// }
 
 			}
 
