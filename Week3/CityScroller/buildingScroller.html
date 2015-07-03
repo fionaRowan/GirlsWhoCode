@@ -8,19 +8,26 @@
 		var middleDrop; 
 		var frontDrop; 
 		var width = 800;
-		var height = 600;
+		var height = 500;
+
+		// layerHeight - buildHeight -positioner
 			void setup()
 			{
 			  size(width,height);
 			  background(125);
 			  fill(255);
-			  //noLoop();
+			  noLoop();
 			  PFont fontA = loadFont("courier");
 			  textFont(fontA, 14);  
 
-			  backDrop = new Drop(700, 0, [0,0,0]); 
-			  middleDrop = new Drop(500, 0, [100,100,100]); 
-			  frontDrop = new Drop(300, 0, [200,200,200]); 
+			  //green
+			  backDrop = new Drop(450, 0, [33,246,90]); 
+
+			  //blue
+			  middleDrop = new Drop(350, 0, [68,33,246]); 
+
+			  //red
+			  frontDrop = new Drop(250, 0, [246,33,47]); 
 			}
 
 			void draw(){  
@@ -30,10 +37,10 @@
 			  backDrop.drawBuildings();
 			  //backDrop.moveBuildings();
 
-			  middleScroller.drawBuildings(); 
+			  middleDrop.drawBuildings(); 
 			  //middleScroller.moveBuildings(); 
 
-			  frontScroller.drawBuildings();
+			  frontDrop.drawBuildings();
 			  //frontScroller.moveBuildings(); 
 			}
 
@@ -46,19 +53,21 @@
 				var r; 
 				var g; 
 				var b; 
+				var positioner;
 				//var buildings = new Array(); 
 
-				Drop(height, s, color){
-					layerHeight = height; 
+				Drop(heightz, s, color){
+					layerHeight = heightz; 
 					speed = s; 
 					r= color[0]; 
 					g= color[1]; 
-					b= color[2]; 
-					}
-
+					b= color[2];
+					positioner = height - layerHeight;  
 				}
 
-				void drawDrawbuildings(){
+				
+
+				void drawBuildings(){
 					var maxHeight = layerHeight;
 					var minHeight = layerHeight*0.25; 
 					var buildHeight, buildWidth; 
@@ -69,16 +78,16 @@
 					while(currentX < endX){
 						buildHeight = Math.floor(Math.random()*(maxHeight-minHeight)+minHeight);
 						buildWidth = 100; // test 
-						build = Building(buildWidth, buildHeight, [r,g,b], currentX, layerHeight - buildHeight);
-						build.draw(); 
+						build = new Building(buildWidth, buildHeight, [r,g,b], currentX, height - buildHeight);
+						build.drawBuilding(); 
 						currentX +=buildWidth; 
 					}
 
 				}
 
-				// void moveBuildings(){
+				void moveBuildings(){
 
-				// }
+				}
 
 			}
 
@@ -91,6 +100,7 @@
 				var r;
 				var g;
 				var b; 
+				
 
 				//class constructor
 				Building(w, h, color, x, y){
@@ -111,7 +121,7 @@
 				}
 
 				//change x coord by given "speed"
-				void move(speed){
+				void move(speed){	
 					xPos -= speed; 
 				}
 			}
