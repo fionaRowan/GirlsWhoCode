@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
+		<script type="text/processing"></script>
+		<script type="text/processing" data-processing-target="mycanvas">
+			void setup()
+			{
+			  size(200,200);
+			  background(125);
+			  fill(255);
+			  noLoop();
+			  PFont fontA = loadFont("courier");
+			  textFont(fontA, 14);  
+			}
+
+			void draw(){  
+			  text("Hello Web!",20,20);
+			  println("Hello ErrorLog!");
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="mycanvas"></canvas>
+	</body>
+</html>
