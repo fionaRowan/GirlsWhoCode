@@ -9,6 +9,9 @@
 		var frontDrop; 
 		var width = 800;
 		var height = 500;
+		var person;
+		var move;
+
 			void setup()
 			{
 
@@ -27,6 +30,10 @@
 
 			  //red
 			  frontDrop = new Drop(250, 4, [246,33,47]); 
+
+			  person = new Person("steve", [0,0,0]);
+
+			  move = 0; 
 			}
 
 			void draw(){  
@@ -36,13 +43,25 @@
 
 			  backDrop.drawBuildings();
 			  backDrop.moveBuildings();
-
+    				
 			  middleDrop.drawBuildings(); 
 			  middleDrop.moveBuildings(); 
 
 			  frontDrop.drawBuildings();
-			  frontDrop.moveBuildings(); 
-			}
+			  frontDrop.moveBuildings();
+			  
+
+			  person.drawPerson();
+
+		}
+
+		// void keyPressed(){
+		// 	if (keyCode == 'a') {
+  //   				 move = 1;
+
+  //   			}
+
+		// }
 
 
 			class Drop{
@@ -89,16 +108,22 @@
 
 				}
 
+				void changeSpeed(x){
+					speed = x;
+				}
+
 				void moveBuildings(){
 
-					for(i=0; i<buildings.length;i++){
-						buildings[i].move(speed);
-					}
+					//if(move ==1){
+						for(i=0; i<buildings.length;i++){
+							buildings[i].move(speed);
+						}
 
-					scrollEndX -=speed; 
-					if(scrollEndX<= width){
-						addBuilding(scrollEndX);
-					}
+						scrollEndX -=speed; 
+						if(scrollEndX<= width){
+							addBuilding(scrollEndX);
+						}
+					//}
 					
 
 				}
@@ -159,6 +184,8 @@
 				var r; 
 				var g; 
 				var b;
+				var personHeight = 20;
+				var personWidth = 20; 
 
 				Person(name, color){
 					person = name; 
@@ -169,6 +196,8 @@
 
 				void drawPerson(){
 					noStroke();
+					fill(r,g,b); 
+					ellipse(width/2, height -personHeight, personWidth, personHeight);
 				}
 
 			}
