@@ -13,35 +13,37 @@
 		// layerHeight - buildHeight -positioner
 			void setup()
 			{
+
 			  size(width,height);
 			  background(125);
 			  fill(255);
-			  noLoop();
+			  //noLoop();
 			  PFont fontA = loadFont("courier");
 			  textFont(fontA, 14);  
 
 			  //green
-			  backDrop = new Drop(450, 0, [33,246,90]); 
+			  backDrop = new Drop(450, 0.5, [33,246,90]); 
 
 			  //blue
-			  middleDrop = new Drop(350, 0, [68,33,246]); 
+			  middleDrop = new Drop(350, 1, [68,33,246]); 
 
 			  //red
-			  frontDrop = new Drop(250, 0, [246,33,47]); 
+			  frontDrop = new Drop(250, 4, [246,33,47]); 
 			}
 
 			void draw(){  
+				background(125);
 			  text("Hello Web!",20,20);
 			  println("Hello ErrorLog!");
 
 			  backDrop.drawBuildings();
-			  //backDrop.moveBuildings();
+			  backDrop.moveBuildings();
 
 			  middleDrop.drawBuildings(); 
-			  //middleScroller.moveBuildings(); 
+			  middleDrop.moveBuildings(); 
 
 			  frontDrop.drawBuildings();
-			  //frontScroller.moveBuildings(); 
+			  frontDrop.moveBuildings(); 
 			}
 
 
@@ -54,7 +56,8 @@
 				var g; 
 				var b; 
 				var positioner;
-				//var buildings = new Array(); 
+				var buildings = new Array(); 
+				var scrollEndX;
 
 				Drop(heightz, s, color){
 					layerHeight = heightz; 
@@ -62,13 +65,7 @@
 					r= color[0]; 
 					g= color[1]; 
 					b= color[2];
-					positioner = height - layerHeight;  
-				}
-
-				
-
-				void drawBuildings(){
-					var maxHeight = layerHeight;
+					positioner = height - layerHeight; 
 					var minHeight = layerHeight*0.25; 
 					var buildHeight, buildWidth; 
 					var currentX = 0; 
@@ -76,18 +73,51 @@
 					var build;
 
 					while(currentX < endX){
-						buildHeight = Math.floor(Math.random()*(maxHeight-minHeight)+minHeight);
+						buildHeight = Math.floor(Math.random()*(layerHeight-minHeight)+minHeight);
 						buildWidth = 100; // test 
 						build = new Building(buildWidth, buildHeight, [r,g,b], currentX, height - buildHeight);
-						build.drawBuilding(); 
+						buildings.push(build);
 						currentX +=buildWidth; 
+					}
+					scrollEndX = currentX; 
+				}
+
+				
+
+				void drawBuildings(){
+					for(i = 0; i<buildings.length;i++){
+						buildings[i].drawBuilding(); 
 					}
 
 				}
 
 				void moveBuildings(){
 
+					for(i=0; i<buildings.length;i++){
+						buildings[i].move(speed);
+					}
+
+					scrollEndX -=speed; 
+					if(scrollEndX<= width){
+						addBuilding(scrollEndX);
+					}
+					
+
 				}
+
+				void addBuilding(xPos){
+					var minHeight = layerHeight*0.25; 
+					var buildHeight = Math.floor(Math.random()*(layerHeight-minHeight)+minHeight);
+					var buildWidth = 100; // test 
+					var build = new Building(buildWidth, buildHeight, [r,g,b], xPos, height - buildHeight);
+						buildings.push(build);
+
+					buildings.push(build)
+
+					scrollEndX += buildWidth;
+
+				}
+
 
 			}
 
