@@ -6,34 +6,36 @@ GWC -->
 	<head>
 		<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
 		<script type="text/processing" data-processing-target="mycanvas">
+
+			//setup
 			void setup()
 			{
 			  size(400,400);
 			  background(89, 216, 255);
 			  fill(255);
-			  noLoop();
+			  //uncomment to stop animating
+			  //noLoop();  
 			  PFont fontA = loadFont("courier");
 			  textFont(fontA, 14);  
 			}
 
+			//draw function
 			void draw(){  
 			  text("Hello Web!",20,20);
-			  println("Hello ErrorLog!");
+			  println("Hello Iteration!");
 
 
-			  //fish
+			 //fish
 			noStroke();
 			fill(bodyColor);
-
 			drawFish(centerX, centerY, bodyLength, bodyHeight, bodyColor);
 
 			//kelp
 			noStroke();
 			fill(kColor);
-
 			drawKelp(kX, kY, kLength, kHeight, kColor);
 
-			//bubbles
+			//bubbles (if animated)
 			fill(247, 244, 247);
  			ellipse(bX, bY, 20, 20);
 			    bX += 20;
@@ -51,7 +53,7 @@ GWC -->
 			var bodyHeight = random(50,150);
 			var bodyColor = color(random(0,162), random(0,200), random(0,255));
 
-
+			//draw fish function
 			var drawFish = function( x, y, l, h, c){
 			    
 			    // body
@@ -76,6 +78,8 @@ GWC -->
 			var kLength = random(10,50);
 			var kHeight = random(200,300);
 			var kColor = color(random(0,162),random(0,200),random(0,255));
+
+			//draw kelp function
 			var drawKelp = function( x, y, l, h, c){
 			    // body
 			    ellipse(kX, kY, kLength, kHeight);
@@ -84,8 +88,7 @@ GWC -->
 
 
 
-			//fish bubbles
-
+			//fish bubble variables
 			var bX=centerX + 20 +bodyLength/2;
 			var bY = centerY-20;
 			
