@@ -26,6 +26,10 @@ var geojson = {
         }
     },
 
+
+// find more symbols here: https://www.mapbox.com/maki/
+// marker colors, anyone? http://www.color-hex.com/color/ff69b4
+// find coordinates of cities here: http://www.gps-coordinates.net/
     {
         type: 'Feature',
         properties: {
