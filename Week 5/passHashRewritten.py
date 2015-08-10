@@ -11,10 +11,14 @@ def main():
 	logins= {"Phoebe": "MyPass"}
 	print(logins)
 	while True:
-		user= raw_input("Please enter a username: ")
-		password= raw_input("Please enter a password: ")
-		addPass(logins, user, password)
-		print(logins)
+		option= raw_input("Enter 1 to add a login. Enter 2 to exit")
+		if(int(option)==1):
+			user= raw_input("Please enter a username: ")
+			password= raw_input("Please enter a password: ")
+			addPass(logins, user, password)
+			print(logins)
+		else:
+			break
 		
 		
 main()
